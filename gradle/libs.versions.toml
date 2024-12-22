@@ -1,0 +1,26 @@
+[versions]
+kotlin = "2.1.0"
+ktor = "3.0.2"
+ktor-test = "3.0.0-beta-2"
+logback = "1.4.14"
+dateTime = "0.6.1"
+
+[libraries]
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+kotlin-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "dateTime" }
+
+ktor-server-core = { module = "io.ktor:ktor-server-core-jvm" }
+ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm" }
+ktor-server-websockets = { module = "io.ktor:ktor-server-websockets" }
+ktor-server-test-jvm = { module = "io.ktor:ktor-server-test-host-jvm" }
+ktor-server-contentNegotiation = { module = "io.ktor:ktor-server-content-negotiation" }
+ktor-network = { module = "io.ktor:ktor-network" }
+ktor-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json"}
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+[plugins]
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
+
