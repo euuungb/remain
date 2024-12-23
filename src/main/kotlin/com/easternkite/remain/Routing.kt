@@ -27,8 +27,14 @@ fun Application.configureRouting() {
                 val hours = duration.toHours()
                 val minutes = duration.toMinutesPart()
 
+                val message = if (duration.toMinutes() < 60) {
+                    "✨ 퇴근까지 ${minutes}분 남았습니다. 😄"
+                } else {
+                    "✨ 퇴근까지 ${hours}시간 ${minutes}분 남았습니다. 😂"
+                }
+
                 DrResponse(
-                    text = "✨ 퇴근까지 ${hours}시간 ${minutes}분 남았습니다. 😂",
+                    text = message,
                     responseType = "inChannel"
                 )
             }.onSuccess {
