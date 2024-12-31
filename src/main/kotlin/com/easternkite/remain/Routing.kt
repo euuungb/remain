@@ -28,15 +28,15 @@ fun Application.configureRouting() {
                 val minutes = duration.toMinutesPart()
 
                 val message = if (duration.toMinutes() < -60) {
-                    "✨ 퇴근시간 ${-hours}시간 ${-minutes}분 초과되었습니다. :joy:"
+                    ":sparkles: 퇴근시간 ${-hours}시간 ${-minutes}분 초과되었습니다. :joy:"
                 } else if (duration.toMinutes() < 0) {
-                    "✨ 퇴근시간 ${-minutes}분 초과되었습니다. :joy:"
+                    ":sparkles: 퇴근시간 ${-minutes}분 초과되었습니다. :joy:"
                 } else if (duration.toMinutes() == 0L) {
-                    "✨ 퇴근시간 입니다 :tada:"
+                    ":sparkles: 퇴근시간 입니다 :tada: :tada:"
                 } else if (duration.toMinutes() < 60) {
-                    "✨ 퇴근까지 ${minutes}분 남았습니다. 😄"
+                    ":sparkles: 퇴근까지 ${minutes}분 남았습니다. :smile:"
                 } else {
-                    "✨ 퇴근까지 ${hours}시간 ${minutes}분 남았습니다. 😂"
+                    ":sparkles: 퇴근까지 ${hours}시간 ${minutes}분 남았습니다. :joy"
                 }
 
                 DrResponse(
