@@ -1,0 +1,38 @@
+name: Deploy to Cloud Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: Deploy to server
+        run: |
+          ssh -o StrictHostKeyChecking=no ubuntu@152.69.206.162 << 'EOF'
+            cd ~/easternkite/remain
+            git pull origin main
+            pgrep -f ktor > ktor_pid.txt
+            
+            if [ -s ktor_pid.txt ]; then
+              echo "Found PID : $(<ktor_pid.txt)"
+              kill $(<ktor_pid.txt) || kill -9 $(<ktor_pid.txt)
+              echo "PID $(<ktor_pid.txt) has stopped."
+              rm -f ktor_pid.txt
+            fi
+            
+            echo "Starting new ktor process..."
+            nohup ./gradlew run > remain.log 2>&1 &
+            echo "New ktor process has started successfully."
+          EOF
