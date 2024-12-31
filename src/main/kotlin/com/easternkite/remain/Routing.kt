@@ -36,7 +36,7 @@ fun Application.configureRouting() {
                 } else if (duration.toMinutes() < 60) {
                     ":sparkles: 퇴근까지 ${minutes}분 남았습니다. :smile:"
                 } else {
-                    ":sparkles: 퇴근까지 ${hours}시간 ${minutes}분 남았습니다. :joy"
+                    ":sparkles: 퇴근까지 ${hours}시간 ${minutes}분 남았습니다. :joy:"
                 }
 
                 DrResponse(
