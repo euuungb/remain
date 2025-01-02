@@ -5,7 +5,7 @@
 ![image](https://github.com/user-attachments/assets/db13804a-6766-465f-b2c1-f14c73360aa2)
 사용자가 특정 커맨드를 전송하면, 두레이 자체에서 이 서버로 post 요청을 대신해주는 원리
 
-이때 전송 정보(커맨드, 사용자)가 Request Body로 들어옴.  
+이때, 서버에서는 전송 정보(커맨드, 사용자)가 Body에 담겨서 들어옴.  
 <img width="466" alt="image" src="https://github.com/user-attachments/assets/2a8731f4-9d83-49e3-96d2-133c2e0f7bee" />
 
 해당 정보를 이용하여, 특정 커맨드에 따른 분기처리를 해주면 된다.  
