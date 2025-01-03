@@ -23,8 +23,14 @@ dependencies {
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.netty)
     implementation(libs.ktor.server.websockets)
-    implementation(libs.ktor.network)
     implementation(libs.ktor.server.contentNegotiation)
+
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.logging)
+    implementation(libs.ktor.client.contentNegotiation)
+
+    implementation(libs.ktor.network)
     implementation(libs.ktor.serialization.json)
 
     testImplementation(libs.ktor.server.test.jvm)
