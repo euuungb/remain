@@ -39,8 +39,13 @@ fun Application.configureRouting() {
                     ":sparkles: 퇴근까지 ${hours}시간 ${minutes}분 남았습니다. :joy:"
                 }
 
+                val userTag = DoorayTag.create(
+                    tenantId = body.tenantId,
+                    userId = body.userId
+                )
+
                 DrResponse(
-                    text = message,
+                    text = "$userTag $message".trimIndent(),
                     responseType = "inChannel"
                 )
             }.onSuccess {
