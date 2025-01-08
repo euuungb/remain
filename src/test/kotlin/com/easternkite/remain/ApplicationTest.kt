@@ -24,7 +24,7 @@ class ApplicationTest {
             contentType(ContentType.Application.Json)
             setBody(
                 DrRequestBody(
-                    text = "19:00",
+                    text = "퇴근 19:00",
                     command = "/time"
                 )
             )
