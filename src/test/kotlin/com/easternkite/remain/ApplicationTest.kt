@@ -33,4 +33,28 @@ class ApplicationTest {
             assertEquals(HttpStatusCode.OK, status)
         }
     }
+
+    @Test
+    fun testTimeWithKeyword() = testApplication {
+        application {
+            module()
+        }
+        val client = createClient {
+            install(ContentNegotiation) {
+                json()
+            }
+        }
+        client.post("/time") {
+            contentType(ContentType.Application.Json)
+            setBody(
+                DrRequestBody(
+                    text = "19:00 점심",
+                    command = "/time"
+                )
+            )
+        }.apply {
+            println("response = ${bodyAsText()}")
+            assertEquals(HttpStatusCode.OK, status)
+        }
+    }
 }

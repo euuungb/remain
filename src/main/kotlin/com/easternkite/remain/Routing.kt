@@ -1,5 +1,6 @@
 package com.easternkite.remain
 
+import com.easternkite.remain.application.MessageUtil
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
@@ -17,27 +18,15 @@ fun Application.configureRouting() {
         post("/time") {
             runCatching {
                 val body = call.receive<DrRequestBody>()
-                val target = body.text.replace("\"", "")
+                val (time, keyword) = body.text.split(" ", limit = 2).run {
+                    if (size > 1) this[0] to this[1] else this[0] to ""
+                }
 
                 val format = DateTimeFormatter.ofPattern("HH:mm")
-                val inputTime = LocalTime.parse(target, format)
+                val inputTime = LocalTime.parse(time, format)
                 val currentTime = LocalTime.now()
                 val duration = Duration.between(currentTime, inputTime)
-
-                val hours = duration.toHours()
-                val minutes = duration.toMinutesPart()
-
-                val message = if (duration.toMinutes() < -60) {
-                    ":sparkles: 퇴근시간 ${-hours}시간 ${-minutes}분 초과되었습니다. :joy:"
-                } else if (duration.toMinutes() < 0) {
-                    ":sparkles: 퇴근시간 ${-minutes}분 초과되었습니다. :joy:"
-                } else if (duration.toMinutes() == 0L) {
-                    ":sparkles: 퇴근시간 입니다 :tada: :tada:"
-                } else if (duration.toMinutes() < 60) {
-                    ":sparkles: 퇴근까지 ${minutes}분 남았습니다. :smile:"
-                } else {
-                    ":sparkles: 퇴근까지 ${hours}시간 ${minutes}분 남았습니다. :joy:"
-                }
+                val message = MessageUtil.getMessage(keyword, duration)
 
                 val userTag = DoorayTag.create(
                     tenantId = body.tenantId,
