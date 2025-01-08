@@ -24,7 +24,15 @@
    curl --location --request POST 'http://localhost:2424/time' \
     --header 'Content-Type: application/json' \
     --data '{
-        "text": "퇴근 22:00",
+        "text": "22:00",
+        "command": "/time"
+    }'
+   ```
+   ``` bash
+   curl --location --request POST 'http://localhost:2424/time' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "text": "22:00 점심",
         "command": "/time"
     }'
    ```

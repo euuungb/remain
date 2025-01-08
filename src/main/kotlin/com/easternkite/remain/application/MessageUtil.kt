@@ -9,8 +9,8 @@ object MessageUtil {
      */
     fun getMessage(keyword: String, duration: Duration): String =
         when (keyword) {
-            Keyword.CLOCK_OUT.value -> getClockOutMessage(duration)
-            else -> getDefaultMessage(keyword, duration)
+            Keyword.CLOCK_OUT.value, "" -> getClockOutMessage(duration)
+            else -> getCustomMessage(keyword, duration)
     }
 
     private fun getClockOutMessage(duration: Duration): String {
@@ -24,7 +24,7 @@ object MessageUtil {
         }
     }
 
-    private fun getDefaultMessage(keyword: String, duration: Duration): String {
+    private fun getCustomMessage(keyword: String, duration: Duration): String {
         val totalMinutes = duration.toMinutes()
         return when {
             totalMinutes < -60 -> "${keyword} ${-duration.toHours()} 시간 ${-duration.toMinutesPart()}분 초과되었습니다. :warning:"
