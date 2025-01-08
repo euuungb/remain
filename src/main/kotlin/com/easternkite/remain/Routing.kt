@@ -18,11 +18,10 @@ fun Application.configureRouting() {
         post("/time") {
             runCatching {
                 val body = call.receive<DrRequestBody>()
-                val text = body.text.replace("\"", "").split(" ")
-                val keyword = text[0];
+                val (keyword, time) = body.text.replace("\"", "").split(" ")
 
                 val format = DateTimeFormatter.ofPattern("HH:mm")
-                val inputTime = LocalTime.parse(text[1], format)
+                val inputTime = LocalTime.parse(time, format)
                 val currentTime = LocalTime.now()
                 val duration = Duration.between(currentTime, inputTime)
                 val message = MessageUtil.getMessage(keyword, duration)
