@@ -20,6 +20,14 @@
 ## 테스트는 어케해여
 1. 개인 로컬 환경에서 서버 run
 2. 앞서 설명한 Request Body를 담아서 POST 요청
+   ``` bash
+   curl --location --request POST 'http://localhost:2424/time' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "text": "퇴근 22:00",
+        "command": "/time"
+    }'
+   ```
 3. 리스폰스 확인
 
 ## Contribution
