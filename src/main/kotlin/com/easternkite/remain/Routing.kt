@@ -21,9 +21,10 @@ fun Application.configureRouting() {
                 val (time, keyword) = body.text.split(" ", limit = 2).run {
                     if (size > 1) this[0] to this[1] else this[0] to ""
                 }
+                val timeFormatted = time.fracFormat()
 
                 val format = DateTimeFormatter.ofPattern("HH:mm")
-                val inputTime = LocalTime.parse(time, format)
+                val inputTime = LocalTime.parse(timeFormatted, format)
                 val currentTime = LocalTime.now()
                 val duration = Duration.between(currentTime, inputTime)
                 val message = MessageUtil.getMessage(keyword, duration)
@@ -42,12 +43,28 @@ fun Application.configureRouting() {
                     text = Json.encodeToString(it),
                     contentType = ContentType.Application.Json
                 )
-            }.onFailure {
-                call.respond(HttpStatusCode.BadRequest)
+            }.onFailure { error ->
+                call.respond("${HttpStatusCode.BadRequest} - ${error.message}")
             }
         }
     }
 }
+
+fun String.fracFormat(): String {
+    return when {
+        contains('.') -> {
+            val (hour, frac) = split(".").map(String::toInt)
+            require(frac in 0..9) { "Invalid fraction value: $frac. Allowed range is 0-9." }
+            val minute = frac * 6
+            "%02d:%02d".format(hour, minute) // "HH:mm" 형식 반환
+        }
+        !contains(':') -> {
+            "%02d:00".format(toInt())       //  정수 입력 케이스
+        }
+        else -> this
+    }
+}
+
 
 @Serializable
 data class DrResponse(
