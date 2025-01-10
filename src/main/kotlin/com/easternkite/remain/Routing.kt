@@ -50,16 +50,26 @@ fun Application.configureRouting() {
     }
 }
 
+
+/**
+ * 입력된 시간을 "HH:mm" 형식으로 변환합니다.
+ * - 소수 입력: "20.5" → "20:30" (소수점은 1자리까지만 허용)
+ * - 정수 입력: "20" → "20:00"
+ * - 기존 형식: "20:30" → 그대로 반환
+ *
+ * @return 변환된 "HH:mm" 형식의 시간 문자열
+ * @throws IllegalArgumentException 유효하지 않은 소수점 입력인 경우
+ */
 fun String.fracFormat(): String {
     return when {
         contains('.') -> {
             val (hour, frac) = split(".").map(String::toInt)
             require(frac in 0..9) { "Invalid fraction value: $frac. Allowed range is 0-9." }
             val minute = frac * 6
-            "%02d:%02d".format(hour, minute) // "HH:mm" 형식 반환
+            "%02d:%02d".format(hour, minute)
         }
         !contains(':') -> {
-            "%02d:00".format(toInt())       //  정수 입력 케이스
+            "%02d:00".format(toInt())
         }
         else -> this
     }
