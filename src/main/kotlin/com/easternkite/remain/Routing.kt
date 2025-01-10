@@ -44,7 +44,15 @@ fun Application.configureRouting() {
                     contentType = ContentType.Application.Json
                 )
             }.onFailure { error ->
-                call.respond("${HttpStatusCode.BadRequest} - ${error.message}")
+                val errorResponse = DrResponse(
+                    text = "${HttpStatusCode.BadRequest} - ${error.message}",
+                    responseType = "ephemeral" // 작성자한테만 표시
+                )
+
+                call.respondText(
+                    text = Json.encodeToString(errorResponse),
+                    contentType = ContentType.Application.Json
+                )
             }
         }
     }
