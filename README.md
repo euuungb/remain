@@ -44,3 +44,19 @@
 3. 로직은 기능단위로, 별도의 파일로서 분리되었음 하는 바람이 있음
 4. 재밌는 아이디어 있으면 바로바로 pr 요청 마구 찔러도됨!
 5. [선택 사항] 테스트 코드 작성해주면 더더욱 좋음!
+
+```
+Copyright 2024-2025 easternkite
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
