@@ -32,9 +32,9 @@ dependencies {
 
     implementation(libs.ktor.network)
     implementation(libs.ktor.serialization.json)
+    implementation(libs.generativeAi)
 
     testImplementation(libs.ktor.server.test.jvm)
     testImplementation(libs.kotlin.test.junit)
     testImplementation(libs.kotlin.datetime)
 }
-
