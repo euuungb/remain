@@ -1,7 +1,7 @@
 package com.easternkite.remain
 
+import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.jupiter.api.Assertions.*
 
 class DoorayTagTest {
     @Test
