@@ -80,22 +80,18 @@ fun Application.fortuneRoute() {
             val fortune = Json.decodeFromString<Fortune>(response.text ?: "")
             val attachmentList = listOf(
                 Field(
-                    short = true,
                     title = "총운",
                     value = fortune.total
                 ),
                 Field(
-                    short = true,
                     title = "연애운",
                     value = fortune.love
                 ),
                 Field(
-                    short = true,
                     title = "금전운",
                     value = fortune.money
                 ),
                 Field(
-                    short = true,
                     title = "건강운",
                     value = fortune.health
                 ),
