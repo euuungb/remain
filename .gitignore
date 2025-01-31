@@ -15,6 +15,7 @@ build/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+src/main/kotlin/com/easternkite/remain/ai/Key.kt
 
 ### IntelliJ IDEA ###
 .idea
