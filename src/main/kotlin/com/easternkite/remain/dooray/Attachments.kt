@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 data class Attachments(
     val attachments: List<Attachment> = listOf(),
     val text: String = "",
-    val responseType: String = "inChannel"
+    val responseType: String = "inChannel",
 )

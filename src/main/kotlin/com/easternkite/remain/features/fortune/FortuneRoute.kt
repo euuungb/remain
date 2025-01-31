@@ -99,7 +99,8 @@ fun Application.fortuneRoute() {
 
             val attachments = Attachments(
                 text = "$userTag 님의 오늘의 운세입니다 :${fortune.zodiac}:",
-                attachments = attachmentList
+                attachments = attachmentList,
+                responseType = "inChannel"
             )
             call.respondText(
                 Json.encodeToString(attachments),
