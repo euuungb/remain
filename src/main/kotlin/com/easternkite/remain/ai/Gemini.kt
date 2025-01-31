@@ -37,7 +37,7 @@ import dev.shreyaspatil.ai.client.generativeai.type.SafetySetting
  */
 object Gemini {
     val model = GenerativeModel(
-        modelName = "gemini-1.5-flash",
+        modelName = "gemini-2.0-flash-exp",
         apiKey = KEY_GEMINI,
         safetySettings = HarmCategory.entries
             .filter { it != HarmCategory.UNKNOWN }
