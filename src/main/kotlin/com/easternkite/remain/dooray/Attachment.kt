@@ -13,5 +13,6 @@ data class Attachment(
     val text: String = "",
     val thumbUrl: String = "",
     val title: String = "",
-    val titleLink: String = ""
+    val titleLink: String = "",
+    val color: String = ""
 )

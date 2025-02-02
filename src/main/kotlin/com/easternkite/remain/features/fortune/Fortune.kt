@@ -11,17 +11,29 @@ data class Fortune(
     /**
      * 총운
      */
-    val total: String,
+    val total: Section,
     /**
      * 금전운
      */
-    val money: String,
+    val money: Section,
     /**
      * 연애운
      */
-    val love: String,
+    val love: Section,
     /**
      * 건강운
      */
-    val health: String,
+    val health: Section,
+)
+
+@Serializable
+data class Section(
+    /**
+     * 운세 내용
+     */
+    val text: String,
+    /**
+     * 운세에 따른 색상
+     */
+    val color: String
 )
