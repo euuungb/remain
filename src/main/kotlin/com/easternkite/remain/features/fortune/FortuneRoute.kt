@@ -108,7 +108,7 @@ fun Application.fortuneRoute() {
             }
 
             val attachments = Attachments(
-                text = "$currentTimeFormatted, $userTag 님의 오늘의 운세입니다 :${fortune.zodiac}:",
+                text = "$currentTimeFormatted,\n$userTag 님의 오늘의 운세입니다 :${fortune.zodiac}:",
                 attachments = attachmentList,
                 responseType = "inChannel"
             )
