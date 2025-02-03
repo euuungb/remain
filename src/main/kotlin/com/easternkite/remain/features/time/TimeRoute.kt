@@ -1,12 +1,14 @@
-package com.easternkite.remain
+package com.easternkite.remain.features.time
 
-import com.easternkite.remain.application.MessageUtil
+import com.easternkite.remain.DoorayTag
+import com.easternkite.remain.create
+import com.easternkite.remain.model.DrRequestBody
+import com.easternkite.remain.model.DrResponse
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.time.Duration
@@ -27,7 +29,7 @@ fun Application.configureRouting() {
                 val inputTime = LocalTime.parse(timeFormatted, format)
                 val currentTime = LocalTime.now()
                 val duration = Duration.between(currentTime, inputTime)
-                val message = MessageUtil.getMessage(keyword, duration)
+                val message = TimeUtil.getMessage(keyword, duration)
 
                 val userTag = DoorayTag.create(
                     tenantId = body.tenantId,
@@ -84,24 +86,5 @@ fun String.fracFormat(): String {
 }
 
 
-@Serializable
-data class DrResponse(
-    val text: String,
-    val responseType: String
-)
 
-@Serializable
-data class DrRequestBody(
-    val channelId: String = "",
-    val channelName: String = "",
-    val tenantId: String = "",
-    val tenantDomain: String = "",
-    val command: String = "",
-    val responseUrl: String = "",
-    val text: String = "",
-    val appToken: String = "",
-    val cmdToken: String = "",
-    val triggerId: String = "",
-    val userId: String = "",
-    val userEmail: String = ""
-)
+

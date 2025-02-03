@@ -1,0 +1,36 @@
+package com.easternkite.remain.features.time
+
+import java.time.Duration
+
+object TimeUtil {
+    /**
+     * 키워드별 안내 메시지 반환
+     */
+    fun getMessage(keyword: String, duration: Duration): String =
+        when (keyword) {
+            TimeKeyword.CLOCK_OUT.value, "" -> getClockOutMessage(duration)
+            else -> getCustomMessage(keyword, duration)
+        }
+
+    private fun getClockOutMessage(duration: Duration): String {
+        val totalMinutes = duration.toMinutes()
+        return when {
+            totalMinutes < -60 -> ":sparkles: ${TimeKeyword.CLOCK_OUT.value} 시간 ${-duration.toHours()}시간 ${-duration.toMinutesPart()}분 초과되었습니다. :joy:"
+            totalMinutes < 0 -> ":sparkles: ${TimeKeyword.CLOCK_OUT.value} 시간 ${-duration.toMinutesPart()}분 초과되었습니다. :joy:"
+            totalMinutes == 0L -> ":sparkles: ${TimeKeyword.CLOCK_OUT.value} 시간입니다 :tada: :tada:"
+            totalMinutes < 60 -> ":sparkles: ${TimeKeyword.CLOCK_OUT.value} 시간까지 ${duration.toMinutesPart()}분 남았습니다. :smile:"
+            else -> ":sparkles: ${TimeKeyword.CLOCK_OUT.value} 시간까지 ${duration.toHours()}시간 ${duration.toMinutesPart()}분 남았습니다. :joy:"
+        }
+    }
+
+    private fun getCustomMessage(keyword: String, duration: Duration): String {
+        val totalMinutes = duration.toMinutes()
+        return when {
+            totalMinutes < -60 -> "$keyword ${-duration.toHours()} 시간 ${-duration.toMinutesPart()}분 초과되었습니다. :warning:"
+            totalMinutes < 0 -> "$keyword 시간 ${-duration.toMinutesPart()}분 초과되었습니다. :warning:"
+            totalMinutes == 0L -> "$keyword 시간입니다 :heavy_check_mark:"
+            totalMinutes < 60 -> "$keyword 시간까지 ${duration.toMinutesPart()}분 남았습니다. :timer_clock:"
+            else -> "$keyword 시간까지 ${duration.toHours()}시간 ${duration.toMinutesPart()}분 남았습니다. :timer_clock:"
+        }
+    }
+}

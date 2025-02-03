@@ -1,5 +1,6 @@
 package com.easternkite.remain
 
+import com.easternkite.remain.model.DrRequestBody
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.*
 import io.ktor.client.statement.bodyAsText
