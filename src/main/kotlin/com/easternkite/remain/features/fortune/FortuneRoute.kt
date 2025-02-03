@@ -1,14 +1,14 @@
 package com.easternkite.remain.features.fortune
 
 import com.easternkite.remain.DoorayTag
-import com.easternkite.remain.DrRequestBody
-import com.easternkite.remain.DrResponse
 import com.easternkite.remain.ai.Gemini
 import com.easternkite.remain.ai.startChat
 import com.easternkite.remain.create
-import com.easternkite.remain.dooray.Attachment
-import com.easternkite.remain.dooray.Attachments
-import com.easternkite.remain.dooray.Field
+import com.easternkite.remain.model.DrRequestBody
+import com.easternkite.remain.model.DrResponse
+import com.easternkite.remain.model.attachment.Attachment
+import com.easternkite.remain.model.attachment.Attachments
+import com.easternkite.remain.model.attachment.Field
 import dev.shreyaspatil.ai.client.generativeai.type.content
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode

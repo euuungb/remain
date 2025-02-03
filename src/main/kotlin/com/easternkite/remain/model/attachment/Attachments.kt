@@ -1,4 +1,4 @@
-package com.easternkite.remain.dooray
+package com.easternkite.remain.model.attachment
 
 import kotlinx.serialization.Serializable
 
