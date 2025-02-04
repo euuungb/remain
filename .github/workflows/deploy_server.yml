@@ -33,6 +33,6 @@ jobs:
             fi
             
             echo "Starting new ktor process..."
-            nohup ./gradlew run > remain.log 2>&1 &
+            nohup ./gradlew run >> remain.log 2>&1 &
             echo "New ktor process has started successfully."
           EOF
