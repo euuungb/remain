@@ -82,7 +82,12 @@ fun Application.fortuneRoute() {
                 userId = body.userId
             )
             val response = chat.sendMessage("생년월일 : ${birth}, 기준 날짜 : $currentTimeFormatted")
-            val fortune = Json.decodeFromString<Fortune>(response.text ?: "")
+            val fortuneJson = response.text?.let { text ->
+                val isMarkedDown = text.contains("```")
+                text.takeUnless { isMarkedDown }
+                    ?: text.lines().drop(1).dropLast(1).joinToString()
+            }
+            val fortune = Json.decodeFromString<Fortune>(fortuneJson ?: "")
             val attachmentList = listOf(
                 FortuneField(
                     title = "총운",
