@@ -83,6 +83,7 @@ fun Application.fortuneRoute() {
             )
             val response = chat.sendMessage("생년월일 : ${birth}, 기준 날짜 : $currentTimeFormatted")
             val fortuneJson = response.text?.let { text ->
+                println(text)
                 val isMarkedDown = text.contains("```")
                 text.takeUnless { isMarkedDown }
                     ?: text.lines().drop(1).dropLast(1).joinToString()
