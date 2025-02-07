@@ -3,9 +3,18 @@
 ![cb](https://img.shields.io/github/contributors/easternkite/remain)  
 ![checks](https://img.shields.io/github/check-runs/easternkite/remain/main)
 ![kotlin](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Feasternkite%2Fremain%2Frefs%2Fheads%2Fmain%2Fgradle%2Flibs.versions.toml&query=%24.versions.kotlin&logo=Kotlin&label=Kotlin&color=purple)
-![ktor](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Feasternkite%2Fremain%2Frefs%2Fheads%2Fmain%2Fgradle%2Flibs.versions.toml&query=%24.versions.ktor&logo=Ktor&label=Ktor
-)  
+![ktor](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Feasternkite%2Fremain%2Frefs%2Fheads%2Fmain%2Fgradle%2Flibs.versions.toml&query=%24.versions.ktor&logo=Ktor&label=Ktor)  
 남은 시간 알려주는 Dooray 슬래시 커맨드
+
+## Features
+### /time 
+> 남은 시간 계산 커맨드
+<img width="477" alt="image" src="https://github.com/user-attachments/assets/f8dc0979-6815-47f5-84ce-57f750d20b07" />
+
+### /fortune
+> MZ력 풀충전 오늘의 운세
+<img src="https://github.com/user-attachments/assets/cb4167a1-a46f-4d7e-9160-456ea521c43d" width="400">
+
 
 ## 간단한 원리
 ![image](https://github.com/user-attachments/assets/db13804a-6766-465f-b2c1-f14c73360aa2)
