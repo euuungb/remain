@@ -8,7 +8,7 @@
 
 ## Features
 ### /time 
-> 남은 시간
+> 남은 시간 알려주는 커맨드
 <img width="477" alt="image" src="https://github.com/user-attachments/assets/f8dc0979-6815-47f5-84ce-57f750d20b07" />
 
 ### /fortune
