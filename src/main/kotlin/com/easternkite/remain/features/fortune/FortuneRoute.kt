@@ -61,26 +61,25 @@ fun Application.fortuneRoute() {
                     }
                 )
             )
-            val birth = body
-                .text
-                .takeIf { it.length == 6 }
-                ?.takeIf { it.matches("[0-9]+".toRegex()) }
-                ?: run {
-                    val errorResponse = DrResponse(
-                        text = "${HttpStatusCode.BadRequest} - 생년월일은 숫자로 이루어진 6자리여야 합니다.",
-                        responseType = "ephemeral" // 작성자한테만 표시
-                    )
+            val birth = body.text
+            if (!validateBirth(birth)) {
+                val errorResponse = DrResponse(
+                    text = "${HttpStatusCode.BadRequest} - 생년월일은 숫자로 이루어진 6자리여야 합니다.",
+                    responseType = "ephemeral" // 작성자한테만 표시
+                )
 
-                    call.respondText(
-                        text = Json.encodeToString(errorResponse),
-                        contentType = ContentType.Application.Json
-                    )
-                    return@post
-                }
+                call.respondText(
+                    text = Json.encodeToString(errorResponse),
+                    contentType = ContentType.Application.Json
+                )
+                return@post
+            }
+
             val userTag = DoorayTag.create(
                 tenantId = body.tenantId,
                 userId = body.userId
             )
+
             val response = chat.sendMessage("생년월일 : ${birth}, 기준 날짜 : $currentTimeFormatted")
             val fortuneJson = response.text?.let { text ->
                 println(text)
@@ -125,6 +124,20 @@ fun Application.fortuneRoute() {
         }
     }
 }
+
+fun validateBirth(birth: String): Boolean {
+    if (birth.length != 6) return false
+
+    val (_, month, day) = runCatching {
+        birth.chunked(2) { it.toString().toInt() }
+    }.getOrNull() ?: return false
+
+    val isPossibleMonth = month in 1..12
+    val isPossibleDay = day in 1 .. 31
+
+    return isPossibleMonth && isPossibleDay
+}
+
 
 data class FortuneField(
     val title: String,
