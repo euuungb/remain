@@ -3,6 +3,7 @@ package com.easternkite.remain.ai
 import dev.shreyaspatil.ai.client.generativeai.GenerativeModel
 import dev.shreyaspatil.ai.client.generativeai.type.BlockThreshold
 import dev.shreyaspatil.ai.client.generativeai.type.Content
+import dev.shreyaspatil.ai.client.generativeai.type.GenerationConfig
 import dev.shreyaspatil.ai.client.generativeai.type.HarmCategory
 import dev.shreyaspatil.ai.client.generativeai.type.SafetySetting
 
@@ -39,6 +40,10 @@ object Gemini {
     val model = GenerativeModel(
         modelName = "gemini-2.0-flash-exp",
         apiKey = KEY_GEMINI,
+        generationConfig = GenerationConfig.builder()
+            .apply {
+                temperature = 2.0f
+            }.build(),
         safetySettings = HarmCategory.entries
             .filter { it != HarmCategory.UNKNOWN }
             .map { SafetySetting(it, BlockThreshold.UNSPECIFIED) }
