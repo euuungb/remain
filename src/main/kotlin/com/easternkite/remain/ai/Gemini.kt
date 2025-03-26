@@ -38,7 +38,7 @@ import dev.shreyaspatil.ai.client.generativeai.type.SafetySetting
  */
 object Gemini {
     val model = GenerativeModel(
-        modelName = "gemini-2.0-flash-exp",
+        modelName = "gemini-2.0-flash",
         apiKey = KEY_GEMINI,
         generationConfig = GenerationConfig.builder()
             .apply {
