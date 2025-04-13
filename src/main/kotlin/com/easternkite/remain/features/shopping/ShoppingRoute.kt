@@ -57,7 +57,7 @@ fun Application.configureShoppingRouting() {
                     .map(ShoppingRecommended::toAttachment)
 
                 Attachments(
-                    text = "${userTag}님을 위해 ${context}를 골라봤어요.",
+                    text = "${userTag}님을 위한 `${context.query}` !",
                     attachments = recommends,
                     responseType = "inChannel"
                 )
