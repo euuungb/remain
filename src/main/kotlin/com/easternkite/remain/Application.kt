@@ -1,6 +1,8 @@
 package com.easternkite.remain
 
 import com.easternkite.remain.features.fortune.fortuneRoute
+import com.easternkite.remain.features.shopping.client.NaverShoppingClient
+import com.easternkite.remain.features.shopping.configureShoppingRouting
 import com.easternkite.remain.features.time.configureRouting
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
@@ -15,4 +17,5 @@ fun Application.module() {
     configureSerialization()
     configureRouting()
     fortuneRoute()
+    configureShoppingRouting()
 }

@@ -20,6 +20,8 @@ jobs:
           cd src/main/kotlin/com/easternkite/remain/ai
           echo package com.easternkite.remain.ai > key.kt
           echo const val KEY_GEMINI = \"ENTER YOUR KEY\" >> key.kt
+          export NAVER_CLIENT_ID="your_client_id"
+          export NAVER_CLIENT_SECRET="your_client_secret" 
 
       - name: Check Test
         run: ./gradlew test --no-configuration-cache
