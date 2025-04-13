@@ -19,7 +19,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 fun Application.configureShoppingRouting() {
-    val mcp = ShoppingMCP()
     routing {
         // 테스트용 GET 엔드포인트
 //        get("/shopping/test") {
@@ -42,6 +41,7 @@ fun Application.configureShoppingRouting() {
 
         post("/shopping") {
             runCatching {
+                val mcp = ShoppingMCP()
                 val body = call.receive<DrRequestBody>()
                 val query = body.text.trim()
                 if (query.isBlank()) {
