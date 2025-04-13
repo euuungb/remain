@@ -14,11 +14,13 @@ data class ShoppingRecommended(
 
 fun ShoppingRecommended.toAttachment(): Attachment {
     return Attachment(
-        title = title,
+        title = title
+            .replace("<b>", "")
+            .replace("</b>", ""),
         titleLink = url,
         text = reason,
         authorName = price.formatWon(),
-        imageUrl = imageUrl
+        thumbUrl = imageUrl
     )
 }
 
