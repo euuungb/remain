@@ -43,6 +43,7 @@ fun Application.configureShoppingRouting() {
             runCatching {
                 val mcp = ShoppingMCP()
                 val body = call.receive<DrRequestBody>()
+                println("body = $body")
                 val query = body.text.trim()
                 if (query.isBlank()) {
                     throw IllegalArgumentException("검색어를 입력해주세요.")
