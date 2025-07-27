@@ -4,7 +4,7 @@
 ![checks](https://img.shields.io/github/check-runs/easternkite/remain/main)
 ![kotlin](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Feasternkite%2Fremain%2Frefs%2Fheads%2Fmain%2Fgradle%2Flibs.versions.toml&query=%24.versions.kotlin&logo=Kotlin&label=Kotlin&color=purple)
 ![ktor](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Feasternkite%2Fremain%2Frefs%2Fheads%2Fmain%2Fgradle%2Flibs.versions.toml&query=%24.versions.ktor&logo=Ktor&label=Ktor)  
-남은 시간 알려주는 Dooray 슬래시 커맨드
+남은 시간 알려주는 Dooray 슬래시 커맨드 
 
 ## Features
 ### /time 
