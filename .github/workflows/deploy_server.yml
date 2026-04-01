@@ -20,7 +20,7 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@152.69.206.162 << 'EOF'
+          ssh -o StrictHostKeyChecking=no ubuntu@150.230.2.203 << 'EOF'
             cd ~/easternkite/remain
             git pull origin main
             pgrep -f ktor > ktor_pid.txt
